@@ -40,35 +40,40 @@ public class Ejercicio14 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("   HOTEL 5 ESTRELLAS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 250, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 250, 30));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jLabel2.setText("     Días de estadia:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 160, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 160, 30));
 
+        txtDiase.setBackground(new java.awt.Color(255, 204, 153));
         txtDiase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDiaseKeyTyped(evt);
             }
         });
-        jPanel1.add(txtDiase, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 120, 30));
+        jPanel1.add(txtDiase, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 120, 30));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         jLabel4.setText(" Valor total a pagar:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, 40));
 
         txtPago.setEditable(false);
+        txtPago.setBackground(new java.awt.Color(255, 204, 153));
         txtPago.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPagoKeyTyped(evt);
             }
         });
-        jPanel1.add(txtPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, 30));
+        jPanel1.add(txtPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 140, 30));
 
+        cmdCalcular.setBackground(new java.awt.Color(255, 255, 153));
         cmdCalcular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmdCalcular.setText("Calcular");
         cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -76,8 +81,9 @@ public class Ejercicio14 extends javax.swing.JFrame {
                 cmdCalcularActionPerformed(evt);
             }
         });
-        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 90, 30));
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 90, 30));
 
+        cmdBorrar.setBackground(new java.awt.Color(255, 204, 153));
         cmdBorrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmdBorrar.setText("Borrar");
         cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +91,7 @@ public class Ejercicio14 extends javax.swing.JFrame {
                 cmdBorrarActionPerformed(evt);
             }
         });
-        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 90, 30));
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,8 +129,19 @@ public class Ejercicio14 extends javax.swing.JFrame {
         }
         else{
             cantd=Integer.parseInt(txtDiase.getText());
+         
+         if (cantd==0){
+         JOptionPane.showMessageDialog(this,"Digite por favor otro valor", "Error", JOptionPane.ERROR_MESSAGE);
+         txtDiase.requestFocusInWindow();  
+         }
+         else{
             cal1=(cantd-1);
             cal2=(100000+(cal1*200000));
+            
+         }   
+ 
+        total=String.valueOf(cal2);
+        txtPago.setText(total);
         }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -133,7 +150,8 @@ public class Ejercicio14 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPagoKeyTyped
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
-        
+        txtDiase.setText("");
+        txtPago.setText("");
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
