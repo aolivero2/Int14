@@ -5,6 +5,8 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SERVIDOR
@@ -28,10 +30,62 @@ public class Ejercicio14 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtDiase = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtPago = new javax.swing.JTextField();
+        cmdCalcular = new javax.swing.JButton();
+        cmdBorrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setText("   HOTEL 5 ESTRELLAS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 250, 30));
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel2.setText("     Días de estadia:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 160, 30));
+
+        txtDiase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiaseKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtDiase, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 120, 30));
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        jLabel4.setText(" Valor total a pagar:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 40));
+
+        txtPago.setEditable(false);
+        txtPago.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPagoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, 30));
+
+        cmdCalcular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 90, 30));
+
+        cmdBorrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,6 +100,41 @@ public class Ejercicio14 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtDiaseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaseKeyTyped
+       char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();    
+          } 
+    }//GEN-LAST:event_txtDiaseKeyTyped
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String total;
+        int cantd;
+        double cal1,cal2=0;
+        
+        if (txtDiase.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Digite el numero de dias","Error",JOptionPane.ERROR_MESSAGE);
+            txtDiase.requestFocusInWindow();
+        }
+        else{
+            cantd=Integer.parseInt(txtDiase.getText());
+            cal1=(cantd-1);
+            cal2=(100000+(cal1*200000));
+        }
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void txtPagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagoKeyTyped
+        
+    }//GEN-LAST:event_txtPagoKeyTyped
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,6 +172,13 @@ public class Ejercicio14 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtDiase;
+    private javax.swing.JTextField txtPago;
     // End of variables declaration//GEN-END:variables
 }
